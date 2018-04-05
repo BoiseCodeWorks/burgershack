@@ -37,6 +37,10 @@ namespace burger_shack
       return null;
     }
 
+    [HttpGet("report/{userId}")]
+    public IEnumerable<UserBurgerOrderReport> GetReport(string userId){
+      return _repo.GetUserBurgerReport(userId);
+    }
 
   }
 }

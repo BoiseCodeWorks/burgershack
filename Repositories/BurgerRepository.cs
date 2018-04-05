@@ -42,6 +42,27 @@ namespace burger_shack.Repositories
       return _db.Query<Burger>("SELECT * FROM burgers");
     }
 
+
+    public IEnumerable<UserBurgerOrderReport> GetUserBurgerReport(string userId)
+    {
+
+      return _db.Query<UserBurgerOrderReport>(@"
+        SELECT
+          u.name username,
+          u.email,
+          ob.burgerId,
+          ob.quantity,
+          ob.orderId,
+          b.name burger,
+          b.kcal
+        FROM orderburgers ob
+        JOIN users u ON u.id = ob.userId
+        JOIN burgers b ON b.id = ob.burgerId
+        WHERE userId = @id;
+      ", new { id = userId });
+
+    }
+
     //UPDATE: EDITONE
     // public Burger Update(int id, Burger burger){
 

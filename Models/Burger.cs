@@ -20,8 +20,11 @@ namespace burger_shack.Models
   public class UserBurgerOrderReport
   {
     public string OrderId { get; set; }
-    public string BurgerName { get; set; }
-    public User User { get; set; }
+    public string Burger { get; set; }
+    public string Username { get; set; }
+    public string Email { get; set; }
+    public int Quantity { get; set; }
+    public int KCal { get; set; }
   }
 
 }
