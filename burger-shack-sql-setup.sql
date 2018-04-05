@@ -44,3 +44,56 @@
 --   PRIMARY KEY (id),
 --   UNIQUE KEY email (email)
 -- )
+
+-- RELATIONSHIPS
+CREATE TABLE orders (
+  id VARCHAR(255) NOT NULL,
+  userId VARCHAR(255) NOT NULL,
+  price DOUBLE(40, 2) NOT NULL,
+  INDEX userId (userId),
+  FOREIGN KEY (userId)
+    REFERENCES users(id)
+    ON DELETE CASCADE,
+  PRIMARY KEY (id)
+)
+
+CREATE TABLE orderburgers (
+  id VARCHAR(255) NOT NULL,
+  orderId VARCHAR(255) NOT NULL,
+  burgerId int NOT NULL,
+  userId VARCHAR(255) NOT NULL,
+  quantity int NOT NULL
+
+  PRIMARY KEY (id),
+  INDEX (orderId, burgerId),
+  INDEX (userId),
+
+  FOREIGN KEY (userId)
+    REFERENCES users(id)
+    ON DELETE CASCADE,
+
+  FOREIGN KEY (orderId)
+    REFERENCES orders(id)
+    ON DELETE CASCADE,
+
+  FOREIGN KEY (burgerId)
+    REFERENCES burgers(id)
+    ON DELETE CASCADE
+
+)
+
+-- get all burgers where user id = 1
+SELECT * FROM orderburgers ob
+JOIN users u ON u.id = ob.userId
+WHERE userId = 1;
+
+
+
+
+
+
+
+
+
+
+

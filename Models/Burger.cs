@@ -7,7 +7,7 @@ namespace burger_shack.Models
   public class Burger : IMenuItem
   {
     public int Id { get; set; }
-    
+
     [Required]
     [MinLength(3)]
     public string Name { get; set; }
@@ -15,6 +15,13 @@ namespace burger_shack.Models
     [Required]
     public double Price { get; set; }
     public int KCal { get; set; }
+  }
+
+  public class UserBurgerOrderReport
+  {
+    public string OrderId { get; set; }
+    public string BurgerName { get; set; }
+    public User User { get; set; }
   }
 
 }
