@@ -17,7 +17,7 @@ namespace burger_shack.Repositories
     {
       //Generate an ID
       Guid g;
-      // Create and display the value of two GUIDs.
+      // Create and display the value  GUIDs.
       g = Guid.NewGuid();
       string id = g.ToString();
       string pass = BCrypt.Net.BCrypt.HashPassword(userData.Password);
@@ -28,7 +28,7 @@ namespace burger_shack.Repositories
         Id = id,
         Name = userData.Name,
         Email = userData.Email,
-        Password = pass,// lets encrypt userData.Password
+        Password = pass// lets encrypt userData.Password
       };
 
       // run a sql command

@@ -92,7 +92,7 @@ namespace burger_shack.Controllers
       }
       return "Invalid Creds";
     }
-    
+
     [Authorize]
     [HttpGet("authenticate")]
     public UserReturnModel Authenticate()
